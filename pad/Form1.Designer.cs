@@ -29,6 +29,7 @@ namespace pad
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
@@ -77,14 +78,13 @@ namespace pad
             // 
             this.toolStripStatusLabelStatus.ForeColor = System.Drawing.Color.White;
             this.toolStripStatusLabelStatus.Name = "toolStripStatusLabelStatus";
-            this.toolStripStatusLabelStatus.Size = new System.Drawing.Size(38, 17);
-            this.toolStripStatusLabelStatus.Text = "status";
+            this.toolStripStatusLabelStatus.Size = new System.Drawing.Size(0, 17);
             this.toolStripStatusLabelStatus.TextChanged += new System.EventHandler(this.toolStripStatusLabelStatus_TextChanged);
             // 
             // toolStripStatusBlank
             // 
             this.toolStripStatusBlank.Name = "toolStripStatusBlank";
-            this.toolStripStatusBlank.Size = new System.Drawing.Size(943, 17);
+            this.toolStripStatusBlank.Size = new System.Drawing.Size(1012, 17);
             this.toolStripStatusBlank.Spring = true;
             // 
             // toolStripStatusLabelCount
@@ -171,6 +171,7 @@ namespace pad
             this.Controls.Add(this.statusStrip1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Pad";
