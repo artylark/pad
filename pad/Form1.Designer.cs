@@ -77,12 +77,14 @@ namespace pad
             // 
             this.toolStripStatusLabelStatus.ForeColor = System.Drawing.Color.White;
             this.toolStripStatusLabelStatus.Name = "toolStripStatusLabelStatus";
-            this.toolStripStatusLabelStatus.Size = new System.Drawing.Size(0, 17);
+            this.toolStripStatusLabelStatus.Size = new System.Drawing.Size(38, 17);
+            this.toolStripStatusLabelStatus.Text = "status";
+            this.toolStripStatusLabelStatus.TextChanged += new System.EventHandler(this.toolStripStatusLabelStatus_TextChanged);
             // 
             // toolStripStatusBlank
             // 
             this.toolStripStatusBlank.Name = "toolStripStatusBlank";
-            this.toolStripStatusBlank.Size = new System.Drawing.Size(1012, 17);
+            this.toolStripStatusBlank.Size = new System.Drawing.Size(943, 17);
             this.toolStripStatusBlank.Spring = true;
             // 
             // toolStripStatusLabelCount

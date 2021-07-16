@@ -50,6 +50,7 @@ namespace pad
             this._isSaved = true;
             this._fileName = "";
             this.SetTitle();
+            this.toolStripStatusLabelStatus.Text = "新規";
         }
 
         private string[] _filters = new string[]
@@ -72,6 +73,7 @@ namespace pad
                 reader.Close();
                 this._isSaved = true;
                 this.SetTitle();
+                this.toolStripStatusLabelStatus.Text = "開きました: " + this._fileName;
             }
         }
 
@@ -165,6 +167,18 @@ namespace pad
         private void textBox1_MouseMove(object sender, MouseEventArgs e)
         {
             this.CountLength();
+        }
+
+        private void toolStripStatusLabelStatus_TextChanged(object sender, EventArgs e)
+        {
+            if (this.toolStripStatusLabelStatus.Text != "")
+            {
+                Task.Run(async () =>
+                {
+                    await Task.Delay(3000);
+                    this.toolStripStatusLabelStatus.Text = "";
+                });
+            }
         }
     }
 }
