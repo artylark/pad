@@ -18,6 +18,7 @@ namespace pad
             InitializeComponent();
             this._isSaved = true;
             this._fileName = "";
+            this.SetTitle();
         }
 
         private bool _isSaved;
@@ -44,27 +45,34 @@ namespace pad
                         this.Save();
                     }
                 }
-                else if (result == DialogResult.No)
-                {
-
-                }
-                this._isSaved = true;
-                this._fileName = "";
-                this.textBox1.Text = "";
             }
+            this.textBox1.Text = "";
+            this._isSaved = true;
+            this._fileName = "";
+            this.SetTitle();
         }
+
+        private string[] _filters = new string[]
+        {
+            "テキスト ドキュメント|*.txt",
+            "テキスト形式ファイル|*.txt;*.md;*.py;*.pyw;*.json;*.kv;*.c;*.h;*.cpp;*.cs;*.html;*.htm;*.css;*.js",
+            "すべてのファイル|*.*"
+        };
 
         private void 開くOToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using var dialog = new OpenFileDialog();
+            dialog.Filter = String.Join("|", this._filters);
+            dialog.FilterIndex = 3;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 this._fileName = dialog.FileName;
                 var reader = new StreamReader(this._fileName);
                 this.textBox1.Text = reader.ReadToEnd();
                 reader.Close();
+                this._isSaved = true;
+                this.SetTitle();
             }
-
         }
 
         private void Save()
@@ -73,18 +81,19 @@ namespace pad
             writer.WriteLine(this.textBox1.Text);
             writer.Close();
             this._isSaved = true;
+            this.SetTitle();
             this.toolStripStatusLabelStatus.Text = "保存しました: " + this._fileName;
         }
 
         private void SaveAs()
         {
             using var dialog = new SaveFileDialog();
+            dialog.Filter = String.Join("|", this._filters);
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 this._fileName = dialog.FileName;
                 this.Save();
             }
-
         }
 
         private void 上書き保存SToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,6 +111,27 @@ namespace pad
         private void 名前を付けて保存AToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.SaveAs();
+        }
+
+        private void SetTitle()
+        {
+            string title = "";
+            if (this._isSaved == false)
+            {
+                title += "* ";
+            }
+
+            if (this._fileName == "")
+            {
+                title += "無題";
+            }
+            else
+            {
+                title += this._fileName;
+            }
+
+            title += " - Pad";
+            this.Text = title;
         }
 
         private void CountLength()
@@ -124,7 +154,11 @@ namespace pad
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            this._isSaved = false;
+            if (this._isSaved == true)
+            {
+                this._isSaved = false;
+                this.SetTitle();
+            }
             this.CountLength();
         }
 
