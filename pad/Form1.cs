@@ -118,7 +118,7 @@ namespace pad
             string title = "";
             if (this._isSaved == false)
             {
-                title += "* ";
+                title += "*";
             }
 
             if (this._fileName == "")
@@ -127,7 +127,7 @@ namespace pad
             }
             else
             {
-                title += this._fileName;
+                title += Path.GetFileName(this._fileName);
             }
 
             title += " - Pad";
