@@ -41,6 +41,8 @@ namespace pad
             this.開くOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.上書き保存SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.名前を付けて保存AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.表示VToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.フォントFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +51,7 @@ namespace pad
             // 
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Font = new System.Drawing.Font("BIZ UDゴシック", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.textBox1.Location = new System.Drawing.Point(0, 24);
             this.textBox1.Multiline = true;
@@ -63,6 +65,7 @@ namespace pad
             // statusStrip1
             // 
             this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.statusStrip1.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.statusStrip1.GripMargin = new System.Windows.Forms.Padding(0);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelStatus,
@@ -84,22 +87,24 @@ namespace pad
             // toolStripStatusBlank
             // 
             this.toolStripStatusBlank.Name = "toolStripStatusBlank";
-            this.toolStripStatusBlank.Size = new System.Drawing.Size(1012, 17);
+            this.toolStripStatusBlank.Size = new System.Drawing.Size(1011, 17);
             this.toolStripStatusBlank.Spring = true;
             // 
             // toolStripStatusLabelCount
             // 
             this.toolStripStatusLabelCount.ForeColor = System.Drawing.Color.White;
             this.toolStripStatusLabelCount.Name = "toolStripStatusLabelCount";
-            this.toolStripStatusLabelCount.Size = new System.Drawing.Size(37, 17);
+            this.toolStripStatusLabelCount.Size = new System.Drawing.Size(38, 17);
             this.toolStripStatusLabelCount.Text = "0文字";
             // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(51)))));
+            this.menuStrip1.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(0);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ファイルFToolStripMenuItem});
+            this.ファイルFToolStripMenuItem,
+            this.表示VToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1064, 24);
@@ -113,7 +118,6 @@ namespace pad
             this.開くOToolStripMenuItem,
             this.上書き保存SToolStripMenuItem,
             this.名前を付けて保存AToolStripMenuItem});
-            this.ファイルFToolStripMenuItem.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ファイルFToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.ファイルFToolStripMenuItem.Name = "ファイルFToolStripMenuItem";
             this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
@@ -160,6 +164,24 @@ namespace pad
             this.名前を付けて保存AToolStripMenuItem.Text = "名前を付けて保存(&A)...";
             this.名前を付けて保存AToolStripMenuItem.Click += new System.EventHandler(this.名前を付けて保存AToolStripMenuItem_Click);
             // 
+            // 表示VToolStripMenuItem
+            // 
+            this.表示VToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.フォントFToolStripMenuItem});
+            this.表示VToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.表示VToolStripMenuItem.Name = "表示VToolStripMenuItem";
+            this.表示VToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.表示VToolStripMenuItem.Text = "表示(&V)";
+            // 
+            // フォントFToolStripMenuItem
+            // 
+            this.フォントFToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(51)))));
+            this.フォントFToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.フォントFToolStripMenuItem.Name = "フォントFToolStripMenuItem";
+            this.フォントFToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.フォントFToolStripMenuItem.Text = "フォント(&F)...";
+            this.フォントFToolStripMenuItem.Click += new System.EventHandler(this.フォントFToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -197,6 +219,8 @@ namespace pad
         private System.Windows.Forms.ToolStripMenuItem 名前を付けて保存AToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusBlank;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCount;
+        private System.Windows.Forms.ToolStripMenuItem 表示VToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem フォントFToolStripMenuItem;
     }
 }
 

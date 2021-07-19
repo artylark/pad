@@ -139,7 +139,7 @@ namespace pad
         private void CountLength()
         {
             int linage = this.textBox1.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None).Length;
-            int length = this.textBox1.Text.Length - (2 * (linage - 1));
+            int length = this.textBox1.Text.Length - (2 * (linage - 1));    // (行数-1)個の改行がそれぞれ2文字分として数えられているのを除く
             string text = string.Format("{0}文字", length);
             if (this.textBox1.SelectedText.Length > 0)
             {
@@ -180,6 +180,20 @@ namespace pad
                 });
             }
         }
+
+        private void フォントFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fd = new FontDialog();
+            fd.Font = textBox1.Font;
+            fd.FontMustExist = true;
+            fd.AllowVerticalFonts = false;
+
+            if (fd.ShowDialog() != DialogResult.Cancel)
+            {
+                textBox1.Font = fd.Font;
+            }
+        }
+
     }
 }
 
