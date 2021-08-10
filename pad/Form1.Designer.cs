@@ -178,7 +178,7 @@ namespace pad
             this.フォントFToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(51)))));
             this.フォントFToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.フォントFToolStripMenuItem.Name = "フォントFToolStripMenuItem";
-            this.フォントFToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.フォントFToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.フォントFToolStripMenuItem.Text = "フォント(&F)...";
             this.フォントFToolStripMenuItem.Click += new System.EventHandler(this.フォントFToolStripMenuItem_Click);
             // 
@@ -197,6 +197,7 @@ namespace pad
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Pad";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

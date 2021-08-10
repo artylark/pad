@@ -26,13 +26,25 @@ namespace pad
 
         private void 新規NToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (this.AskSave())
+            {
+                this.textBox1.Text = "";
+                this._isSaved = true;
+                this._fileName = "";
+                this.SetTitle();
+                this.toolStripStatusLabelStatus.Text = "新規";
+            }
+        }
+
+        private bool AskSave()
+        {
             if (this._isSaved == false)
             {
                 DialogResult result = MessageBox.Show("変更内容を保存しますか？", "Pad", MessageBoxButtons.YesNoCancel);
 
                 if (result == DialogResult.Cancel)
                 {
-                    return;
+                    return false;
                 }
                 else if (result == DialogResult.Yes)
                 {
@@ -46,12 +58,9 @@ namespace pad
                     }
                 }
             }
-            this.textBox1.Text = "";
-            this._isSaved = true;
-            this._fileName = "";
-            this.SetTitle();
-            this.toolStripStatusLabelStatus.Text = "新規";
+            return true;
         }
+
 
         private string[] _filters = new string[]
         {
@@ -62,18 +71,21 @@ namespace pad
 
         private void 開くOToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using var dialog = new OpenFileDialog();
-            dialog.Filter = String.Join("|", this._filters);
-            dialog.FilterIndex = 3;
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (this.AskSave())
             {
-                this._fileName = dialog.FileName;
-                var reader = new StreamReader(this._fileName);
-                this.textBox1.Text = reader.ReadToEnd();
-                reader.Close();
-                this._isSaved = true;
-                this.SetTitle();
-                this.toolStripStatusLabelStatus.Text = "開きました: " + this._fileName;
+                using var dialog = new OpenFileDialog();
+                dialog.Filter = String.Join("|", this._filters);
+                dialog.FilterIndex = 3;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    this._fileName = dialog.FileName;
+                    var reader = new StreamReader(this._fileName);
+                    this.textBox1.Text = reader.ReadToEnd();
+                    reader.Close();
+                    this._isSaved = true;
+                    this.SetTitle();
+                    this.toolStripStatusLabelStatus.Text = "開きました: " + this._fileName;
+                }
             }
         }
 
@@ -194,6 +206,13 @@ namespace pad
             }
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.AskSave() == false)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }
 
