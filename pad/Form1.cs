@@ -19,6 +19,25 @@ namespace pad
             this._isSaved = true;
             this._fileName = "";
             this.SetTitle();
+
+            // プログラムから開く に対応
+            string[] files = System.Environment.GetCommandLineArgs();
+            var files1 = files.Skip(1);
+            foreach (var filePath in files1)
+            {
+                if (System.IO.File.Exists(filePath))
+                {
+                    try
+                    {
+                        this.Open(filePath);
+                        break;
+                    }
+                    catch
+                    {
+                        MessageBox.Show(String.Format("{0}を開くことができません", filePath), "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private bool _isSaved;
@@ -78,15 +97,20 @@ namespace pad
                 dialog.FilterIndex = 3;
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    this._fileName = dialog.FileName;
-                    var reader = new StreamReader(this._fileName);
-                    this.textBox1.Text = reader.ReadToEnd();
-                    reader.Close();
-                    this._isSaved = true;
-                    this.SetTitle();
-                    this.toolStripStatusLabelStatus.Text = "開きました: " + this._fileName;
+                    this.Open(dialog.FileName);
                 }
             }
+        }
+
+        private void Open(string filename)
+        {
+            var reader = new StreamReader(filename);
+            this.textBox1.Text = reader.ReadToEnd();
+            reader.Close();
+            this._fileName = filename;
+            this._isSaved = true;
+            this.SetTitle();
+            this.toolStripStatusLabelStatus.Text = "開きました: " + filename;
         }
 
         private void Save()
